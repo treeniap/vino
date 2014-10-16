@@ -39,6 +39,12 @@ class Vine(object):
 
     def search_tag(self, tag_, page=None, size=None):
         return self._call("tags/search/%s" % tag_, params={"page": page, "size": size})["data"]
+        
+    def get_user(self, userid_, page=None, size=None):
+    	return self._call("users/profiles/%s" % userid_, params={"page": page, "size": size})["data"]
+    	
+    def get_user_timeline(self, userid_, page=None, size=None):
+    	return self._call("timelines/users/%s" % userid_, params={"page": page, "size": size})["data"]
 
     def _call(self, call, params=None, data=None):
         """Make an API call. Return the parsed response. If login has
